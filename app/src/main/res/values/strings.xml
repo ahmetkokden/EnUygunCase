@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">En Uygun Case</string>
+
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="basket">Basket</string>
+    <string name="basket_title">BASKET</string>
+    <string name="checkout">CHECKOUT</string>
+    <string name="pay">PAY</string>
+    <string name="products">Ürünler(%s)</string>
+    <string name="search_product">Search Product</string>
+    <string name="filter">Filter</string>
+    <string name="sort">Sort</string>
+    <string name="add_to_cart">ADD TO CART</string>
 </resources>
