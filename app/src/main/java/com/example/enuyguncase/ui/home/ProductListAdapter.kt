@@ -10,7 +10,10 @@ import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.ItemProductBinding
 import com.example.enuyguncase.domain.model.ProductListItem
 
-class ProductListAdapter(private val productList: MutableList<ProductListItem>,private val clickListener: (Int) -> Unit,) :
+class ProductListAdapter(
+    private val productList: MutableList<ProductListItem>,
+    private val clickListener: (Int) -> Unit
+) :
     RecyclerView.Adapter<ProductListAdapter.ProductListAdapterViewHolder>() {
     var items: MutableList<ProductListItem> = mutableListOf()
 
@@ -59,10 +62,15 @@ class ProductListAdapter(private val productList: MutableList<ProductListItem>,p
             }
             binding.tvProductTitle.text = productList.title
             binding.tvProductInfo.text = productList.description
-            binding.tvProductPrice.text =   binding.root.context?.getString(R.string.price, productList.displayPrice)
-            binding.tvProductFinalPrice.text = binding.root.context?.getString(R.string.strike_price, productList.displayFinalPrice)
-            binding.tvProductPrice.paintFlags =  Paint.STRIKE_THRU_TEXT_FLAG
-            Glide.with(binding.root.context).load(productList.thumbnail).into(binding.ivProductImage)
+            binding.tvProductPrice.text =
+                binding.root.context?.getString(R.string.price, productList.displayPrice)
+            binding.tvProductFinalPrice.text = binding.root.context?.getString(
+                R.string.strike_price,
+                productList.displayFinalPrice
+            )
+            binding.tvProductPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            Glide.with(binding.root.context).load(productList.thumbnail)
+                .into(binding.ivProductImage)
         }
     }
 }

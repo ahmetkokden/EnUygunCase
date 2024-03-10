@@ -15,10 +15,12 @@ data class FavoriteProductListEntity (
     val description: String,
     @ColumnInfo(name = "price")
     val price: Double,
+    @ColumnInfo(name = "stock")
+    val stock: Int,
     @ColumnInfo(name = "final_price")
-    val profileImage: Double,
+    val final_price: Double,
     @ColumnInfo(name = "thumbnail")
-    val userUrl: String,
+    val thumbnail: String,
     @ColumnInfo(name = "is_favourited")
     var isFavourited: Boolean = false
 )

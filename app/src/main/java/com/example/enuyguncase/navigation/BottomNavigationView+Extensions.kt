@@ -20,17 +20,24 @@ internal var mNavGraphIds: List<Int> = emptyList()
 internal var mContainerId: Int = -1
     private set
 
+internal lateinit var mBadge: BadgeDrawable
+
 fun Fragment.setupMultipleBackStackBottomNavigation(
     navGraphIds: List<Int>,
     containerId: Int,
     bottomNavigationView: BottomNavigationView,
     badge: BadgeDrawable
 ) {
+    mBadge = badge
     storeNavDefaults(navGraphIds, containerId)
     bottomNavigationView.setupMultipleBackStack(
         fragmentManager = childFragmentManager,
         badge
     )
+}
+
+fun Fragment.setBadgeNumber(count: Int) {
+    mBadge.number = count
 }
 
 private fun BottomNavigationView.setupMultipleBackStack(
@@ -48,13 +55,13 @@ private fun BottomNavigationView.setupMultipleBackStack(
 
     multiNavHost.create(selectedItemId)
 
-/*
-    // When a navigation item is selected
-    setOnNavigationItemSelectedListener { item ->
+    /*
+        // When a navigation item is selected
+        setOnNavigationItemSelectedListener { item ->
 
-    }
+        }
 
- */
+     */
 
     setOnItemSelectedListener { item ->
         multiNavHost.selectSiblings(item.itemId)

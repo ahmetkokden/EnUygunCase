@@ -50,6 +50,10 @@ class ProductDetailFragment : Fragment() {
             ivLeftIcon.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            tvAddCartButton.setOnClickListener {
+                productDetailFragmentViewModel.addCartFavoritedProduct()
+            }
         }
     }
 

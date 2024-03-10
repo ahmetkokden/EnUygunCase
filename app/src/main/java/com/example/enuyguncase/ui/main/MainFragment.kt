@@ -64,7 +64,7 @@ class MainFragment : Fragment() {
     private fun setupBottomNavigationBar() {
         val badge = binding.navView.getOrCreateBadge(R.id.navigation_basket)
         badge.isVisible = false
-        badge.number = 12
+        badge.number = 0
         badge.badgeGravity = TOP_START
         // Setup the bottom navigation view with a list of navigation graphs
         setupMultipleBackStackBottomNavigation(

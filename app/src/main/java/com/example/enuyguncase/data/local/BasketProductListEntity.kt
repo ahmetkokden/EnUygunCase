@@ -14,11 +14,11 @@ data class BasketProductListEntity (
     @ColumnInfo(name = "price")
     val price: Double,
     @ColumnInfo(name = "final_price")
-    val profileImage: Double,
+    val final_price: Double,
     @ColumnInfo(name = "stock")
-    val userType: Int,
+    val stock: Int,
     @ColumnInfo(name = "product_count")
     val productCount: Int,
     @ColumnInfo(name = "thumbnail")
-    val userUrl: String
+    val thumbnail: String
 )
