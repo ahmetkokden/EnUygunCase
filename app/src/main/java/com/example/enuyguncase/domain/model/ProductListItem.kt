@@ -8,7 +8,7 @@ data class ProductListItem(
     val price:Double?,
     val displayFinalPrice:String?,
     val finalPrice:Double?,
-    val isFavorited:Boolean = false,
+    var isFavorited:Boolean = false,
     val discountPercentage: Double?,
     val stock: Int?,
     val brand: String?,

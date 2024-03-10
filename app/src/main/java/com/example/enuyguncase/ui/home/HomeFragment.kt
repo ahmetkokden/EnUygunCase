@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentHomeBinding
 import com.example.enuyguncase.domain.model.ProductList
@@ -62,8 +64,25 @@ class HomeFragment : Fragment() {
 
     private fun prepareProductList(productList: List<ProductListItem>) {
         adapter = ProductListAdapter(
-            productList = productList.toMutableList()
+            productList = productList.toMutableList(),
+            clickListener = {
+                productClicked(it)
+            }
         )
         binding.rvHomeProduct.adapter = adapter
+    }
+
+    private fun productClicked(productId:Int) {
+        binding.apply {
+            val bundle =
+                bundleOf(PRODUCT_ID to productId)
+            findNavController().navigate(
+                R.id.action_home_fragment_to_product_detail_fragment, bundle
+            )
+        }
+    }
+
+    companion object {
+        const val PRODUCT_ID = "productID"
     }
 }

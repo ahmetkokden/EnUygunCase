@@ -7,5 +7,15 @@
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.example.enuyguncase.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_fragment_to_product_detail_fragment"
+            app:destination="@id/product_detail_fragment" >
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/product_detail_fragment"
+        android:name="com.example.enuyguncase.ui.productdetail.ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail" />
 </navigation>

@@ -10,7 +10,7 @@ import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.ItemProductBinding
 import com.example.enuyguncase.domain.model.ProductListItem
 
-class ProductListAdapter(private val productList: MutableList<ProductListItem>) :
+class ProductListAdapter(private val productList: MutableList<ProductListItem>,private val clickListener: (Int) -> Unit,) :
     RecyclerView.Adapter<ProductListAdapter.ProductListAdapterViewHolder>() {
     var items: MutableList<ProductListItem> = mutableListOf()
 
@@ -52,6 +52,11 @@ class ProductListAdapter(private val productList: MutableList<ProductListItem>) 
         fun bind(productList: ProductListItem, position: Int) {
             this.productList = productList
             this.position = position
+            binding.clProduct.setOnClickListener {
+                productList.id?.let {
+                    clickListener(it.toInt())
+                }
+            }
             binding.tvProductTitle.text = productList.title
             binding.tvProductInfo.text = productList.description
             binding.tvProductPrice.text =   binding.root.context?.getString(R.string.price, productList.displayPrice)

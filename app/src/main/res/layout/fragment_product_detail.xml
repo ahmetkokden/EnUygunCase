@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_left_icon"
+            android:layout_width="@dimen/unit24"
+            android:layout_height="@dimen/unit24"
+            android:layout_marginStart="@dimen/unit20"
+            android:layout_marginTop="@dimen/unit25"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_product_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/eerie_black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_left_icon"
+            app:layout_constraintBottom_toBottomOf="@id/iv_left_icon"
+            tools:text="Macbook Pro" />
+
+        <ImageView
+            android:id="@+id/iv_right_icon"
+            android:layout_width="@dimen/unit30"
+            android:layout_height="@dimen/unit30"
+            android:layout_marginTop="@dimen/unit25"
+            android:layout_marginEnd="@dimen/unit20"
+            android:background="@drawable/bg_r10_item"
+            android:padding="@dimen/unit5"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_checkout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_r10_button"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/unit30"
+            android:layout_marginHorizontal="@dimen/unit20"
+            android:padding="@dimen/unit14"
+            android:text="@string/add_to_cart"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
