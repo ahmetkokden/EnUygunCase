@@ -18,6 +18,7 @@
     <dimen name="unit20">20dp</dimen>
     <dimen name="unit22">22dp</dimen>
     <dimen name="unit24">24dp</dimen>
+    <dimen name="unit25">25dp</dimen>
     <dimen name="unit27">27dp</dimen>
     <dimen name="unit30">30dp</dimen>
     <dimen name="unit40">40dp</dimen>

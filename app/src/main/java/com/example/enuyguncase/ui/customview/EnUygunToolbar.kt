@@ -84,7 +84,7 @@ class EnUygunToolbar @JvmOverloads constructor(
         )
         textView.setTextColor(ContextCompat.getColor(context, R.color.white))
 
-        textView.setFont(context, R.font.Inter_Bold)
+        textView.setFont(context, R.font.inter_bold)
     }
 
     private fun setTextViewParams() {
