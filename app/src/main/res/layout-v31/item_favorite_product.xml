@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/unit15"
+    android:layout_marginVertical="@dimen/unit8"
+    android:background="@drawable/bg_r10_item">
+
+    <ImageView
+        android:id="@+id/iv_product_image"
+        android:layout_width="@dimen/unit160"
+        android:layout_height="@dimen/unit115"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_r10_item"
+        android:contentDescription="TODO"
+        android:scaleType="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/iv_product_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit5"
+        android:layout_marginEnd="@dimen/unit5"
+        android:background="@drawable/bg_r10_favorite"
+        android:contentDescription="TODO"
+        android:padding="@dimen/unit5"
+        android:src="@drawable/ic_favorite_selected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/unit4"
+        android:layout_marginTop="@dimen/unit5"
+        android:ellipsize="end"
+        android:fontFamily="@font/Inter_Bold"
+        android:maxWidth="@dimen/unit136"
+        android:maxLines="1"
+        android:textColor="@color/eerie_black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_product_image"
+        tools:text="Macbook Pro" />
+
+    <TextView
+        android:id="@+id/tv_product_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit2"
+        android:ellipsize="end"
+        android:fontFamily="@font/Inter_Medium"
+        android:maxWidth="@dimen/unit136"
+        android:maxLines="1"
+        android:textColor="@color/hydrargyrum"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/tv_product_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_title"
+        tools:text="MacBook Pro 2021 with miMacBook Pro 2021 with mi..." />
+
+    <TextView
+        android:id="@+id/tv_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit5"
+        android:ellipsize="end"
+        android:fontFamily="@font/Inter_Bold"
+        android:gravity="end"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tv_product_info"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_info"
+        tools:text="1749 TL" />
+
+    <TextView
+        android:id="@+id/tv_product_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/unit10"
+        android:layout_marginEnd="@dimen/unit5"
+        android:layout_marginBottom="@dimen/unit11"
+        android:background="@drawable/bg_r10_circle"
+        android:ellipsize="end"
+        android:fontFamily="@font/Inter_Bold"
+        android:gravity="end"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/unit11"
+        android:paddingVertical="@dimen/unit7"
+        android:text="+"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_info" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

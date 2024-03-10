@@ -7,7 +7,8 @@
     <string name="basket_title">BASKET</string>
     <string name="checkout">CHECKOUT</string>
     <string name="pay">PAY</string>
-    <string name="products">Ürünler(%s)</string>
+    <string name="products">Ürünler</string>
+    <string name="product_count">(Toplam (%s) adet)</string>
     <string name="search_product">Search Product</string>
     <string name="filter">Filter</string>
     <string name="sort">Sort</string>
