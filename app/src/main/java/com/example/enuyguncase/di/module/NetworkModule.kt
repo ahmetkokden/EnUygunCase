@@ -15,8 +15,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
-
-
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
@@ -39,7 +37,7 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideUrl(): String {
+    fun provideBaseUrl(): String {
         return "https://dummyjson.com/"
     }
 

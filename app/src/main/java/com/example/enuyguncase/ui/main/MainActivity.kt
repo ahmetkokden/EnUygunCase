@@ -12,9 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-
-
     private var currentNavController: NavController? = null
 
     private lateinit var graphIds: ArrayList<Int>
