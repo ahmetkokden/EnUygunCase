@@ -1,6 +1,7 @@
 package com.example.enuyguncase.ui.main
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.navigation.NavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentMainBinding
 import com.example.enuyguncase.navigation.setupMultipleBackStackBottomNavigation
+import com.google.android.material.badge.BadgeDrawable.TOP_END
+import com.google.android.material.badge.BadgeDrawable.TOP_START
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,7 +40,6 @@ class MainFragment : Fragment() {
     }
 
 
-
     fun initUI(savedInstanceState: Bundle?) {
         graphIds = arrayListOf(
             R.navigation.nav_home,
@@ -60,11 +62,16 @@ class MainFragment : Fragment() {
     }
 
     private fun setupBottomNavigationBar() {
+        val badge = binding.navView.getOrCreateBadge(R.id.navigation_basket)
+        badge.isVisible = false
+        badge.number = 12
+        badge.badgeGravity = TOP_START
         // Setup the bottom navigation view with a list of navigation graphs
         setupMultipleBackStackBottomNavigation(
             navGraphIds = graphIds,
             containerId = binding.navHostContainer.id,
-            bottomNavigationView = binding.navView
+            bottomNavigationView = binding.navView,
+            badge = badge
         )
     }
 

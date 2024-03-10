@@ -7,8 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
-import androidx.navigation.Navigator
 import androidx.navigation.fragment.NavHostFragment
+import com.example.enuyguncase.R
+import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // global variable to store user provided navGraphids
@@ -22,16 +23,19 @@ internal var mContainerId: Int = -1
 fun Fragment.setupMultipleBackStackBottomNavigation(
     navGraphIds: List<Int>,
     containerId: Int,
-    bottomNavigationView: BottomNavigationView
+    bottomNavigationView: BottomNavigationView,
+    badge: BadgeDrawable
 ) {
     storeNavDefaults(navGraphIds, containerId)
     bottomNavigationView.setupMultipleBackStack(
-        fragmentManager = childFragmentManager
+        fragmentManager = childFragmentManager,
+        badge
     )
 }
-private fun BottomNavigationView.setupMultipleBackStack(
-    fragmentManager: FragmentManager
 
+private fun BottomNavigationView.setupMultipleBackStack(
+    fragmentManager: FragmentManager,
+    badge: BadgeDrawable
 ) {
     val multiNavHost = MultiNavHost(
         navGraphIds = mNavGraphIds,
@@ -44,9 +48,39 @@ private fun BottomNavigationView.setupMultipleBackStack(
 
     multiNavHost.create(selectedItemId)
 
+/*
     // When a navigation item is selected
-    setOnNavigationItemSelectedListener {
-            item -> multiNavHost.selectSiblings(item.itemId)
+    setOnNavigationItemSelectedListener { item ->
+
+    }
+
+ */
+
+    setOnItemSelectedListener { item ->
+        multiNavHost.selectSiblings(item.itemId)
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                badge.isVisible = false
+                true
+            }
+
+            R.id.navigation_favorite -> {
+                badge.isVisible = false
+
+                true
+            }
+
+            R.id.navigation_basket -> {
+                badge.isVisible = true
+
+                true
+            }
+
+            else -> {
+                badge.isVisible = false
+                true
+            }
+        }
     }
 
     // Optional: on item reselected, pop back stack to the destination of the graph
