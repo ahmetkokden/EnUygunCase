@@ -9,6 +9,7 @@ import com.example.enuyguncase.domain.repository.ProductDatabaseRepository
 import com.example.enuyguncase.domain.usecase.ProductListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -27,6 +28,7 @@ class ProductDetailFragmentViewModel @Inject constructor(
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
     val product = _product.asSharedFlow()
+
     var productData: ProductListItem? = null
 
     fun getProductDetail(productId: Int) {
@@ -34,7 +36,7 @@ class ProductDetailFragmentViewModel @Inject constructor(
             productListUseCase.getProduct(productId).collect { response ->
                 when (response.status) {
                     NetworkResult.Status.SUCCESS -> {
-                        _product.emit(response.data)
+                        _product.tryEmit(response.data)
                         productData = response.data
                         getFavoritedProduct()
                     }

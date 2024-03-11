@@ -24,10 +24,10 @@
             android:fontFamily="@font/inter_bold"
             android:textColor="@color/eerie_black"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_left_icon"
             app:layout_constraintBottom_toBottomOf="@id/iv_left_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_left_icon"
             tools:text="Macbook Pro" />
 
         <ImageView
@@ -42,15 +42,104 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2_image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="@dimen/unit20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_right_icon" />
+
+        <TextView
+            android:id="@+id/tv_product_discount"
+            android:layout_width="@dimen/unit40"
+            android:layout_height="@dimen/unit40"
+            android:layout_marginEnd="@dimen/unit7"
+            android:layout_marginTop="@dimen/unit7"
+            android:background="@drawable/bg_discount"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/unit4"
+            android:paddingTop="@dimen/unit10"
+            android:paddingBottom="@dimen/unit12"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/vp2_image_slider"
+            tools:text="%38" />
+
+        <LinearLayout
+            android:id="@+id/ll_image_dots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/unit5"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/vp2_image_slider" />
+
+        <TextView
+            android:id="@+id/tv_product_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit14"
+            android:layout_marginTop="@dimen/unit15"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/eerie_black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vp2_image_slider"
+            tools:text="Macbook Pro" />
+
+        <TextView
+            android:id="@+id/tv_product_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit14"
+            android:layout_marginTop="@dimen/unit7"
+            android:fontFamily="@font/inter_medium"
+            android:maxWidth="287dp"
+            android:textColor="@color/eerie_black"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_subtitle"
+            tools:text="MacBook Pro 2021 with mini-LED display may launch between September, November" />
+
+        <TextView
+            android:id="@+id/tv_product_final_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/unit15"
+
+            android:layout_marginEnd="@dimen/unit20"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/eerie_black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vp2_image_slider"
+            tools:text="Macbook Pro" />
+
+        <TextView
+            android:id="@+id/tv_product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/aged_moustache_grey"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_product_final_price"
+            app:layout_constraintEnd_toStartOf="@id/tv_product_final_price"
+            app:layout_constraintTop_toTopOf="@id/tv_product_final_price"
+            tools:text="Macbook Pro" />
+
         <TextView
             android:id="@+id/tv_add_cart_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit30"
             android:background="@drawable/bg_r10_button"
             android:fontFamily="@font/inter_bold"
             android:gravity="center"
-            android:layout_marginBottom="@dimen/unit30"
-            android:layout_marginHorizontal="@dimen/unit20"
             android:padding="@dimen/unit14"
             android:text="@string/add_to_cart"
             android:textColor="@color/black"

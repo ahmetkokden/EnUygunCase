@@ -35,4 +35,26 @@ class BasketFragmentViewModel @Inject constructor(
             }
         }
     }
+
+    fun updateProductCount(count:Int,productId:Long) {
+        viewModelScope.launch {
+            viewModelScope.launch {
+                withContext(Dispatchers.IO) {
+                    productDatabaseRepository.updateBasketProductCount(count, productId)
+                    getBasketProduct()
+                }
+            }
+        }
+    }
+
+    fun deleteProductFromBasket(productId:Long){
+        viewModelScope.launch {
+            viewModelScope.launch {
+                withContext(Dispatchers.IO) {
+                    productDatabaseRepository.deleteProductFromBasket(productId)
+                    getBasketProduct()
+                }
+            }
+        }
+    }
 }

@@ -11,7 +11,11 @@
     <string name="product_count">(Toplam (%1$s) adet)</string>
     <string name="search_product">Search Product</string>
     <string name="filter">Filter</string>
+    <string name="total">Total:</string>
+    <string name="discount">Discount:</string>
+    <string name="basket_price">Price:</string>
     <string name="price">%1$s TL</string>
+    <string name="product_discount">%1$s</string>
     <string name="strike_price">%1$s TL</string>
     <string name="sort">Sort</string>
     <string name="add_to_cart">ADD TO CART</string>

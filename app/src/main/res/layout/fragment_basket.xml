@@ -6,22 +6,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv_basket_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/unit20"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/basket_title"
+            android:textColor="@color/eerie_black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsv_home_products"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/unit13"
-            app:layout_constraintBottom_toTopOf="@+id/tv_checkout_button"
+            android:layout_marginVertical="@dimen/unit13"
+            app:layout_constraintBottom_toTopOf="@+id/tv_price_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tv_basket_title">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_home_product"
+                    android:id="@+id/rv_basket_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="visible"
@@ -36,22 +49,99 @@
         </androidx.core.widget.NestedScrollView>
 
         <TextView
+            android:id="@+id/tv_price_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit2"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/basket_price"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_discount_title"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit2"
+            android:fontFamily="@font/inter_bold"
+            tools:text="2345 TL"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_discount_title"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_discount_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit2"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/discount"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_total_price"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit2"
+            android:fontFamily="@font/inter_bold"
+            tools:text="%34"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_total_price"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_total_price_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit52"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/total"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_checkout_button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit52"
+            android:fontFamily="@font/inter_bold"
+            tools:text="1234 TL"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_checkout_button"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
             android:id="@+id/tv_checkout_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit30"
             android:background="@drawable/bg_r10_button"
             android:fontFamily="@font/inter_bold"
             android:gravity="center"
-            android:layout_marginBottom="@dimen/unit30"
-            android:layout_marginHorizontal="@dimen/unit20"
             android:padding="@dimen/unit14"
             android:text="@string/checkout"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nsv_home_products" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

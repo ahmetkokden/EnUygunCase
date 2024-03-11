@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentMainBinding
@@ -20,6 +21,8 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
 
     private var currentNavController: NavController? = null
+
+    val mainViewModel: MainViewModel by activityViewModels()
 
     private lateinit var graphIds: ArrayList<Int>
 

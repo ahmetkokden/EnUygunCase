@@ -4,6 +4,7 @@ import com.example.enuyguncase.data.local.BasketProductListEntity
 import com.example.enuyguncase.data.local.FavoriteProductListEntity
 import com.example.enuyguncase.data.remote.response.ProductListResponse
 import com.example.enuyguncase.data.remote.response.ProductResponse
+import com.example.enuyguncase.domain.model.ImageItem
 import com.example.enuyguncase.domain.model.ProductList
 import com.example.enuyguncase.domain.model.ProductListItem
 import com.example.enuyguncase.utilities.format
@@ -53,4 +54,8 @@ fun FavoriteProductListEntity.toBasketProductListEntity() = BasketProductListEnt
     productCount = 1,
     thumbnail = thumbnail ,
 )
+
+fun ProductListItem.toImageItemList() = productImages?.map {
+    ImageItem(id = id.toString(), url = it)
+}
 

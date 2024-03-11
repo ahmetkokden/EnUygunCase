@@ -6,11 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.enuyguncase.R
 import com.example.enuyguncase.data.local.FavoriteProductListEntity
 import com.example.enuyguncase.databinding.FragmentFavoriteBinding
+import com.example.enuyguncase.ui.main.MainFragment
+import com.example.enuyguncase.ui.main.MainViewModel
+import com.example.enuyguncase.utilities.Event
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

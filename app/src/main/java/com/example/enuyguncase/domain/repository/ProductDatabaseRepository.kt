@@ -16,7 +16,15 @@ class ProductDatabaseRepository @Inject internal constructor(
 
     fun getBasketProducts() = basketProductDao.getBasketProducts()
 
-    fun addBasketProduct(favoriteProductListEntity: FavoriteProductListEntity) = basketProductDao.addBasketProduct(favoriteProductListEntity.toBasketProductListEntity())
+    fun addBasketProduct(favoriteProductListEntity: FavoriteProductListEntity) =
+        basketProductDao.addBasketProduct(favoriteProductListEntity.toBasketProductListEntity())
+
+
+    fun updateBasketProductCount(count: Int, productId: Long) =
+        basketProductDao.updateCount(count, productId)
+
+    fun deleteProductFromBasket(productId: Long) =
+        basketProductDao.deleteBasketProduct(productId)
 
     private val favoriteProductDao = productDatabase.favoriteProductDao()
 
@@ -24,7 +32,9 @@ class ProductDatabaseRepository @Inject internal constructor(
 
     fun getFavoritedProduct(productId: Long) = favoriteProductDao.getFavoriteProduct(productId)
 
-    fun addFavoriteProduct(productListItem: ProductListItem) = favoriteProductDao.addFavoriteProduct(productListItem.toFavoriteProductListEntity())
+    fun addFavoriteProduct(productListItem: ProductListItem) =
+        favoriteProductDao.addFavoriteProduct(productListItem.toFavoriteProductListEntity())
 
-    fun deleteFavoritedProduct(productId: Long) = favoriteProductDao.deleteFavoriteProduct(productId)
+    fun deleteFavoritedProduct(productId: Long) =
+        favoriteProductDao.deleteFavoriteProduct(productId)
 }

@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.enuyguncase.R
+import com.example.enuyguncase.data.local.BasketProductListEntity
 import com.example.enuyguncase.databinding.FragmentBasketBinding
 import com.example.enuyguncase.navigation.setBadgeNumber
+import com.example.enuyguncase.utilities.format
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -20,6 +22,8 @@ class BasketFragment : Fragment() {
     private lateinit var binding: FragmentBasketBinding
 
     private val basketFragmentViewModel: BasketFragmentViewModel by viewModels()
+
+    private lateinit var adapter: BasketProductListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +42,10 @@ class BasketFragment : Fragment() {
         observeData()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun initUI() {
         basketFragmentViewModel.getBasketProduct()
     }
@@ -46,7 +54,43 @@ class BasketFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             basketFragmentViewModel.product.collectLatest {
                 setBadgeNumber(it?.size ?: 0)
+                if (it != null) {
+                    prepareProductList(it)
+                    setBasketComponent(it)
+                }
             }
         }
+    }
+
+
+    private fun prepareProductList(productList: List<BasketProductListEntity>) {
+        adapter = BasketProductListAdapter(
+            productList = productList.toMutableList(),
+            incProduct = { count, id ->
+                basketFragmentViewModel.updateProductCount(count, id)
+            },
+            descProduct = { count, id ->
+                basketFragmentViewModel.updateProductCount(count, id)
+            },
+            deleteProduct = {
+                basketFragmentViewModel.deleteProductFromBasket(it.toLong())
+            }
+        )
+        binding.rvBasketProduct.adapter = adapter
+    }
+
+    private fun setBasketComponent(listEntity: List<BasketProductListEntity>) {
+        val totalPrice = listEntity.map { it.price * it.productCount }.reduce { sum, price -> sum + price }
+
+        val totalFinalPrice = listEntity.map { it.final_price * it.productCount }.reduce { sum, price -> sum + price }
+
+        val totalDiscount = totalPrice - totalFinalPrice
+
+        with(binding) {
+            tvPrice.text = context?.getString(R.string.price, totalPrice.format())
+            tvTotalPrice.text = context?.getString(R.string.price, totalFinalPrice.format())
+            tvDiscount.text = context?.getString(R.string.price, totalDiscount.format())
+        }
+
     }
 }
