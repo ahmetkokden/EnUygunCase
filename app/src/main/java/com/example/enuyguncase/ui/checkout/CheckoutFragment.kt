@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CheckoutFragment : Fragment(){
-
     private lateinit var binding: FragmentCheckoutBinding
     private val checkoutFragmentViewModel: CheckoutFragmentViewModel by viewModels()
 

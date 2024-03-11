@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.enuyguncase.ui.home.HomeFragmentViewModel" />
@@ -69,7 +68,7 @@
                 android:padding="@dimen/unit8"
                 android:textColorHint="@color/antarctica_1"
                 android:textSize="9sp"
-                android:text="@{viewModel.searchKeyword}"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.searchProduct(text)}"
                 tools:ignore="SmallSp" />
 
             <TextView
