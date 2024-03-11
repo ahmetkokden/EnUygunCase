@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_left_icon"
+            android:layout_width="@dimen/unit24"
+            android:layout_height="@dimen/unit24"
+            android:layout_marginStart="@dimen/unit20"
+            android:layout_marginTop="@dimen/unit25"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_product_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/checkout"
+            android:textColor="@color/eerie_black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_left_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_left_icon" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/unit18"
+            android:layout_marginTop="@dimen/unit22"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext_selector"
+            android:fontFamily="@font/inter_regular"
+            android:hint="@string/name"
+            android:paddingHorizontal="@dimen/unit14"
+            android:paddingTop="16dp"
+            android:paddingBottom="17dp"
+            android:textColorHint="@color/antarctica_1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_left_icon"
+            tools:ignore="SmallSp" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/unit18"
+            android:layout_marginTop="@dimen/unit22"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext_selector"
+            android:fontFamily="@font/inter_regular"
+            android:hint="@string/email"
+            android:paddingHorizontal="@dimen/unit14"
+            android:paddingTop="16dp"
+            android:paddingBottom="17dp"
+            android:textColorHint="@color/antarctica_1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_name"
+            tools:ignore="SmallSp" />
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/unit18"
+            android:layout_marginTop="@dimen/unit22"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edittext_selector"
+            android:fontFamily="@font/inter_regular"
+            android:hint="@string/phone"
+            android:paddingHorizontal="@dimen/unit14"
+            android:paddingTop="16dp"
+            android:paddingBottom="17dp"
+            android:textColorHint="@color/antarctica_1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_email"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_checkout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/unit20"
+            android:layout_marginBottom="@dimen/unit30"
+            android:background="@drawable/bg_r10_button"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:padding="@dimen/unit14"
+            android:text="@string/pay"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

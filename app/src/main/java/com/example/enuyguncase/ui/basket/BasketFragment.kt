@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.data.local.BasketProductListEntity
 import com.example.enuyguncase.databinding.FragmentBasketBinding
@@ -42,12 +43,14 @@ class BasketFragment : Fragment() {
         observeData()
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     private fun initUI() {
         basketFragmentViewModel.getBasketProduct()
+
+        with(binding) {
+            tvCheckoutButton.setOnClickListener {
+                findNavController().navigate(R.id.action_basket_fragment_to_checkout_fragment)
+            }
+        }
     }
 
     private fun observeData() {
