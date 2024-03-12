@@ -11,6 +11,10 @@ interface ProductService {
     suspend fun getProductList(
     ): ProductListResponse
 
+    @GET("products/categories")
+    suspend fun getProductCategories(
+    ): Array<String>
+
     @GET("products/{id}")
     suspend fun getProduct(
         @Path("id") id: Int

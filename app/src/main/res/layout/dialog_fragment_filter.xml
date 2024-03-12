@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_left_icon"
+        android:layout_width="@dimen/unit24"
+        android:layout_height="@dimen/unit24"
+        android:layout_marginStart="@dimen/unit20"
+        android:layout_marginTop="@dimen/unit25"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/filter"
+        android:textColor="@color/eerie_black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_left_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_left_icon" />
+
+    <RelativeLayout
+        android:id="@+id/rl_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/unit20"
+        android:layout_marginTop="@dimen/unit44"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/iv_left_icon">
+
+        <LinearLayout
+            android:id="@+id/ll_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/categories"
+                android:textColor="@color/eerie_black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/iv_expand_categories"
+                android:layout_width="@dimen/unit24"
+                android:layout_height="@dimen/unit24"
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_expand_more" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_categories"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/unit30"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/unit20"
+        android:layout_marginTop="@dimen/unit44"
+        app:layout_constraintTop_toBottomOf="@id/rl_categories">
+
+        <LinearLayout
+            android:id="@+id/ll_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/price_filter"
+                android:textColor="@color/eerie_black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/iv_expand_price"
+                android:layout_width="@dimen/unit24"
+                android:layout_height="@dimen/unit24"
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_expand_more" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_expand_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/unit30"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <EditText
+                android:id="@+id/et_min_price"
+                android:layout_width="@dimen/unit115"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/unit20"
+                android:background="@drawable/bg_edittext_selector"
+                android:fontFamily="@font/inter_regular"
+                android:hint="@string/min"
+                android:inputType="number"
+                android:paddingHorizontal="@dimen/unit14"
+                android:paddingTop="10dp"
+                android:paddingBottom="11dp"
+                android:textColorHint="@color/antarctica_1"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_max_price"
+                android:layout_width="@dimen/unit115"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext_selector"
+                android:fontFamily="@font/inter_regular"
+                android:hint="@string/max"
+                android:inputType="number"
+                android:paddingHorizontal="@dimen/unit14"
+                android:paddingTop="10dp"
+                android:paddingBottom="11dp"
+                android:textColorHint="@color/antarctica_1"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_discount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/unit20"
+        android:layout_marginTop="@dimen/unit44"
+        app:layout_constraintTop_toBottomOf="@id/rl_price">
+
+        <LinearLayout
+            android:id="@+id/ll_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/discount_filter"
+                android:textColor="@color/eerie_black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/iv_expand_discount"
+                android:layout_width="@dimen/unit24"
+                android:layout_height="@dimen/unit24"
+                android:src="@drawable/ic_expand_more" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_expand_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/unit30"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <EditText
+                android:id="@+id/et_min_discount"
+                android:layout_width="@dimen/unit115"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/unit20"
+                android:background="@drawable/bg_edittext_selector"
+                android:fontFamily="@font/inter_regular"
+                android:hint="@string/min"
+                android:inputType="number"
+                android:paddingHorizontal="@dimen/unit14"
+                android:paddingTop="10dp"
+                android:paddingBottom="11dp"
+                android:textColorHint="@color/antarctica_1"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_apply_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/unit20"
+        android:layout_marginBottom="@dimen/unit30"
+        android:background="@drawable/bg_r10_button"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:padding="@dimen/unit14"
+        android:text="@string/apply"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

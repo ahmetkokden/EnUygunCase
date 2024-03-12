@@ -41,14 +41,36 @@ class HomeFragment : Fragment() {
         initUI()
         observeData()
         homeViewModel.getProductList()
+        homeViewModel.getProductCategories()
     }
 
     private fun initUI() {
+        with(binding) {
+            tvSortButton.setOnClickListener {
+                SortBottomSheetFragment.newInstance(selectOnClickListener = {
+                    homeViewModel.sortProductAboutEvent(it)
+                }).show(childFragmentManager, SortBottomSheetFragment::javaClass.name)
+            }
+            tvFilterButton.setOnClickListener {
+                FilterDialogFragment.newInstance(setApplyClickListener = {
+                    homeViewModel.filterProduct(it)
+                },homeViewModel.productCategories.value
+                ).show(childFragmentManager, FilterDialogFragment::javaClass.name)
+            }
+        }
     }
 
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
             homeViewModel.productList.collect {
+                setTotalCount()
+                if (it.isEmpty().not())
+                    prepareProductList(it)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            homeViewModel.filteredProduct.collect {
                 setTotalCount()
                 if (it.isEmpty().not())
                     prepareProductList(it)

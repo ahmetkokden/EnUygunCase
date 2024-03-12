@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:layout_width="@dimen/unit24"
+        android:layout_height="@dimen/unit24"
+        android:layout_marginStart="@dimen/unit20"
+        android:layout_marginTop="@dimen/unit25"
+        android:src="@drawable/ic_empty_dot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:layout_marginStart="@dimen/unit20"
+        android:textColor="@color/eerie_black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_selected"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_selected"
+        tools:text="Macbook Pro" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

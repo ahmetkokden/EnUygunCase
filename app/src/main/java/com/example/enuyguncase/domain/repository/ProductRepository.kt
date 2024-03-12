@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {
     suspend fun getProductList() : Flow<NetworkResult<ProductList>>
+
+    suspend fun getProductCategories() : Flow<NetworkResult<Array<String>>>
     suspend fun getProduct(
         id: Int
     ): Flow<NetworkResult<ProductListItem>>

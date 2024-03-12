@@ -15,4 +15,8 @@ class ProductListUseCaseImpl @Inject constructor(
 
     override suspend fun getProduct(id: Int): Flow<NetworkResult<ProductListItem>> =
         productRepository.getProduct(id)
+
+    override suspend fun getProductCategories(): Flow<NetworkResult<Array<String>>> =
+        productRepository.getProductCategories()
+
 }

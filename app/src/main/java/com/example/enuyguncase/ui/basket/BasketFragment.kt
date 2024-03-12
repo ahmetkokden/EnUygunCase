@@ -83,16 +83,25 @@ class BasketFragment : Fragment() {
     }
 
     private fun setBasketComponent(listEntity: List<BasketProductListEntity>) {
-        val totalPrice = listEntity.map { it.price * it.productCount }.reduce { sum, price -> sum + price }
+        var totalPrice = 0.0
 
-        val totalFinalPrice = listEntity.map { it.final_price * it.productCount }.reduce { sum, price -> sum + price }
+        var totalFinalPrice = 0.0
 
-        val totalDiscount = totalPrice - totalFinalPrice
+        var totalDiscount = 0.0
+
+        if (listEntity.isEmpty().not()) {
+            totalPrice = listEntity.map { it.price * it.productCount }.reduce { sum, price -> sum + price }
+
+            totalFinalPrice = listEntity.map { it.final_price * it.productCount }.reduce { sum, price -> sum + price }
+
+            totalDiscount = totalPrice - totalFinalPrice
+        }
 
         with(binding) {
             tvPrice.text = context?.getString(R.string.price, totalPrice.format())
             tvTotalPrice.text = context?.getString(R.string.price, totalFinalPrice.format())
             tvDiscount.text = context?.getString(R.string.price, totalDiscount.format())
+            tvCheckoutButton.isEnabled = listEntity.isEmpty().not()
         }
 
     }

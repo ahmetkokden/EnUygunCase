@@ -13,6 +13,7 @@
     <dimen name="unit13">13dp</dimen>
     <dimen name="unit14">14dp</dimen>
     <dimen name="unit15">15dp</dimen>
+    <dimen name="unit16">16dp</dimen>
     <dimen name="unit18">18dp</dimen>
     <dimen name="unit19">19dp</dimen>
     <dimen name="unit20">20dp</dimen>
@@ -23,6 +24,7 @@
     <dimen name="unit30">30dp</dimen>
     <dimen name="unit32">32dp</dimen>
     <dimen name="unit40">40dp</dimen>
+    <dimen name="unit44">44dp</dimen>
     <dimen name="unit48">48dp</dimen>
     <dimen name="unit52">52dp</dimen>
     <dimen name="unit62">62dp</dimen>

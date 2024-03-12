@@ -18,8 +18,20 @@
     <string name="product_discount">%1$s</string>
     <string name="strike_price">%1$s TL</string>
     <string name="sort">Sort</string>
+    <string name="sort_title">Sırala</string>
     <string name="add_to_cart">ADD TO CART</string>
     <string name="name">NAME</string>
     <string name="email">EMAIL</string>
     <string name="phone">PHONE</string>
+    <string name="descreasing_price">Fiyatı Azalan</string>
+    <string name="inscreasing_price">Fiyatı Artan</string>
+    <string name="most_discount">En Fazla İndirim</string>
+    <string name="apply">UYGULA</string>
+    <string name="categories">Kategoriler</string>
+    <string name="price_filter">Fiyat</string>
+    <string name="discount_filter">İndirim</string>
+
+    <string name="min">En az</string>
+
+    <string name="max">En Fazla</string>
 </resources>

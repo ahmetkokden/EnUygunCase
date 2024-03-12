@@ -11,4 +11,6 @@ interface ProductListUseCase {
     suspend fun getProduct(
         id: Int
     ): Flow<NetworkResult<ProductListItem>>
+
+    suspend fun getProductCategories(): Flow<NetworkResult<Array<String>>>
 }

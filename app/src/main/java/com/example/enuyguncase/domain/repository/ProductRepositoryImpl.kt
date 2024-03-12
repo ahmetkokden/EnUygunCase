@@ -1,6 +1,5 @@
 package com.example.enuyguncase.domain.repository
 
-import android.util.Log
 import com.example.enuyguncase.data.ProductService
 import com.example.enuyguncase.data.base.BaseErrorResponse
 import com.example.enuyguncase.data.base.NetworkResult
@@ -28,6 +27,21 @@ class ProductRepositoryImpl @Inject constructor(
                 val response = productService.getProductList()
                 val mappedData = response.toProductList()
                 emit(NetworkResult.success(mappedData))
+            } catch (e: HttpException) {
+                val type = object : TypeToken<BaseErrorResponse>() {}.type
+                val errorResponse: BaseErrorResponse =
+                    Gson().fromJson(e.response()?.errorBody()?.stringSuspending(), type)
+                emit(NetworkResult.error(errorResponse.message, errorResponse.code))
+            }
+        }.flowOn(Dispatchers.IO)
+            .onStart { emit(NetworkResult.loading()) }
+    }
+
+    override suspend fun getProductCategories(): Flow<NetworkResult<Array<String>>> {
+        return flow {
+            try {
+                val response = productService.getProductCategories()
+                emit(NetworkResult.success(response))
             } catch (e: HttpException) {
                 val type = object : TypeToken<BaseErrorResponse>() {}.type
                 val errorResponse: BaseErrorResponse =
