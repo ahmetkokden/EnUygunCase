@@ -15,6 +15,7 @@
     <string name="discount">Discount:</string>
     <string name="basket_price">Price:</string>
     <string name="price">%1$s TL</string>
+    <string name="payment_product_count">x%1$s</string>
     <string name="product_discount">%1$s</string>
     <string name="strike_price">%1$s TL</string>
     <string name="sort">Sort</string>
@@ -30,6 +31,11 @@
     <string name="categories">Kategoriler</string>
     <string name="price_filter">Fiyat</string>
     <string name="discount_filter">İndirim</string>
+    <string name="complete_payment">Ödemeni Tamamla</string>
+    <string name="payment">Payment</string>
+    <string name="card_name">Kart İsmi</string>
+    <string name="card_number">Kart Numarası</string>
+    <string name="card_date">Kartın Son Kullanma Tarihi</string>
 
     <string name="min">En az</string>
 

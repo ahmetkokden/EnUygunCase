@@ -5,6 +5,7 @@ import com.example.enuyguncase.data.local.FavoriteProductListEntity
 import com.example.enuyguncase.data.remote.response.ProductListResponse
 import com.example.enuyguncase.data.remote.response.ProductResponse
 import com.example.enuyguncase.domain.model.ImageItem
+import com.example.enuyguncase.domain.model.PaymentProduct
 import com.example.enuyguncase.domain.model.ProductList
 import com.example.enuyguncase.domain.model.ProductListItem
 import com.example.enuyguncase.utilities.format
@@ -53,6 +54,13 @@ fun FavoriteProductListEntity.toBasketProductListEntity() = BasketProductListEnt
     stock = stock,
     productCount = 1,
     thumbnail = thumbnail ,
+)
+
+fun BasketProductListEntity.toPaymentProduct() = PaymentProduct(
+    title = title,
+    finalPrice = final_price,
+    productCount = productCount,
+    thumbnail = thumbnail
 )
 
 fun ProductListItem.toImageItemList() = productImages?.map {

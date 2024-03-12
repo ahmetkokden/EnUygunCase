@@ -25,6 +25,10 @@ class BasketFragmentViewModel @Inject constructor(
     )
     val product = _product.asSharedFlow()
 
+    var totalFinalPrice = 0.0
+    var totalPrice = 0.0
+    var totalDiscount = 0.0
+
     fun getBasketProduct() {
         viewModelScope.launch {
             viewModelScope.launch {

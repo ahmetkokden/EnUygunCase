@@ -8,14 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentCheckoutBinding
+import com.example.enuyguncase.ui.payment.PaymentFragment.Companion.PAYMENT_MODEL
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CheckoutFragment : Fragment(){
+class CheckoutFragment : Fragment() {
     private lateinit var binding: FragmentCheckoutBinding
     private val checkoutFragmentViewModel: CheckoutFragmentViewModel by viewModels()
 
@@ -32,6 +34,11 @@ class CheckoutFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        checkoutFragmentViewModel.paymentDetail = requireArguments().getParcelable(
+            CHECKOUT_MODEL
+        )
+
         initUI()
         observeData()
     }
@@ -41,11 +48,41 @@ class CheckoutFragment : Fragment(){
             ivLeftIcon.setOnClickListener {
                 findNavController().popBackStack()
             }
+            tvCheckoutButton.setOnClickListener {
+
+                if (controlFields()) {
+                    val bundle = setPaymentBundle()
+                    findNavController().navigate(
+                        R.id.action_checkout_fragment_to_payment_fragment,
+                        bundle
+                    )
+                }
+            }
         }
     }
 
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
         }
+    }
+
+    private fun setPaymentBundle(): Bundle {
+        val paymentDetail = checkoutFragmentViewModel.paymentDetail?.apply {
+            buyerMail = binding.etEmail.text.toString()
+            buyerName = binding.etName.text.toString()
+            buyerNo = binding.etPhone.text.toString()
+        }
+
+        return Bundle().apply {
+            putParcelable(PAYMENT_MODEL, paymentDetail)
+        }
+    }
+
+    private fun controlFields(): Boolean {
+        return (binding.etName.text.isNotEmpty() && binding.etEmail.text.isNotEmpty() && binding.etPhone.text.isNotEmpty())
+    }
+
+    companion object {
+        const val CHECKOUT_MODEL = "checkoutModel"
     }
 }

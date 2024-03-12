@@ -12,7 +12,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.data.local.BasketProductListEntity
 import com.example.enuyguncase.databinding.FragmentBasketBinding
+import com.example.enuyguncase.domain.mapper.toPaymentProduct
+import com.example.enuyguncase.domain.model.PaymentDetail
 import com.example.enuyguncase.navigation.setBadgeNumber
+import com.example.enuyguncase.ui.checkout.CheckoutFragment.Companion.CHECKOUT_MODEL
 import com.example.enuyguncase.utilities.format
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -48,8 +51,32 @@ class BasketFragment : Fragment() {
 
         with(binding) {
             tvCheckoutButton.setOnClickListener {
-                findNavController().navigate(R.id.action_basket_fragment_to_checkout_fragment)
+                val bundle = setCheckoutBundle()
+                findNavController().navigate(
+                    R.id.action_basket_fragment_to_checkout_fragment,
+                    bundle
+                )
             }
+        }
+    }
+
+    private fun setCheckoutBundle(): Bundle {
+        val paymentProductList = basketFragmentViewModel.product.replayCache.last()?.map {
+            it.toPaymentProduct()
+        }
+
+        val paymentDetail = PaymentDetail(
+            productList = paymentProductList ?: emptyList(),
+            buyerMail = "",
+            buyerName = "",
+            buyerNo = "",
+            totalDiscount = basketFragmentViewModel.totalDiscount,
+            totalPrice = basketFragmentViewModel.totalPrice,
+            totalFinalPrice = basketFragmentViewModel.totalFinalPrice
+        )
+
+        return Bundle().apply {
+            putParcelable(CHECKOUT_MODEL, paymentDetail)
         }
     }
 
@@ -90,12 +117,18 @@ class BasketFragment : Fragment() {
         var totalDiscount = 0.0
 
         if (listEntity.isEmpty().not()) {
-            totalPrice = listEntity.map { it.price * it.productCount }.reduce { sum, price -> sum + price }
+            totalPrice =
+                listEntity.map { it.price * it.productCount }.reduce { sum, price -> sum + price }
 
-            totalFinalPrice = listEntity.map { it.final_price * it.productCount }.reduce { sum, price -> sum + price }
+            totalFinalPrice = listEntity.map { it.final_price * it.productCount }
+                .reduce { sum, price -> sum + price }
 
             totalDiscount = totalPrice - totalFinalPrice
         }
+
+        basketFragmentViewModel.totalFinalPrice = totalFinalPrice
+        basketFragmentViewModel.totalDiscount = totalDiscount
+        basketFragmentViewModel.totalPrice = totalPrice
 
         with(binding) {
             tvPrice.text = context?.getString(R.string.price, totalPrice.format())

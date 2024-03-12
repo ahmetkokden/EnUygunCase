@@ -16,5 +16,15 @@
     <fragment
         android:id="@+id/checkout_fragment"
         android:name="com.example.enuyguncase.ui.checkout.CheckoutFragment"
-        tools:layout="@layout/fragment_checkout" />
+        tools:layout="@layout/fragment_checkout" >
+        <action
+            android:id="@+id/action_checkout_fragment_to_payment_fragment"
+            app:destination="@id/payment_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/payment_fragment"
+        android:name="com.example.enuyguncase.ui.payment.PaymentFragment"
+        tools:layout="@layout/fragment_payment" />
+
 </navigation>

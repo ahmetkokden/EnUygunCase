@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_product"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/unit20"
+    android:layout_marginVertical="@dimen/unit6"
+    android:background="@drawable/bg_r10_item"
+    android:paddingVertical="@dimen/unit10"
+    android:paddingStart="@dimen/unit18"
+    android:paddingEnd="@dimen/unit7">
+
+    <ImageView
+        android:id="@+id/iv_product_image"
+        android:layout_width="@dimen/unit71"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/unit4"
+        android:ellipsize="end"
+        android:fontFamily="@font/inter_bold"
+        android:maxWidth="@dimen/unit136"
+        android:maxLines="1"
+        android:textColor="@color/eerie_black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_product_image"
+        app:layout_constraintTop_toTopOf="@id/iv_product_image"
+        tools:text="Macbook Pro" />
+
+
+    <LinearLayout
+        android:id ="@+id/ll_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_product_final_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/unit4"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:text="1749 TL" />
+
+        <TextView
+            android:id="@+id/tv_product_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:text="x5" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
