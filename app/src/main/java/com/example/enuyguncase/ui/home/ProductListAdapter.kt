@@ -48,7 +48,7 @@ class ProductListAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ProductListAdapterViewHolder(private val binding: ItemProductBinding) :
+    inner class ProductListAdapterViewHolder(val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
         lateinit var productList: ProductListItem
         var position: Int? = null
