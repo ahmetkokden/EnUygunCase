@@ -1,7 +1,6 @@
 package com.example.enuyguncase.ui.main
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentMainBinding
+import com.example.enuyguncase.navigation.BottomNavigationListener
+import com.example.enuyguncase.navigation.MultiNavHost
 import com.example.enuyguncase.navigation.setupMultipleBackStackBottomNavigation
-import com.google.android.material.badge.BadgeDrawable.TOP_END
 import com.google.android.material.badge.BadgeDrawable.TOP_START
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), BottomNavigationListener {
     private lateinit var binding: FragmentMainBinding
 
     private var currentNavController: NavController? = null
@@ -39,6 +39,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        MultiNavHost.bottomNavigationListener = this
         initUI(savedInstanceState)
     }
 
@@ -81,5 +82,9 @@ class MainFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         currentNavController = null
+    }
+
+    override fun bottomNavVisibility(isVisible: Boolean) {
+        binding.navView.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 }

@@ -17,6 +17,9 @@ interface BasketProductDao {
     @Query("DELETE FROM basket_list_table where id=:productId ")
     fun deleteBasketProduct(productId: Long)
 
+    @Query("DELETE FROM basket_list_table")
+    fun purgeAllBasketProduct()
+
     @Query("UPDATE basket_list_table SET product_count=:count WHERE id = :productId")
     fun updateCount(count: Int, productId: Long)
 }

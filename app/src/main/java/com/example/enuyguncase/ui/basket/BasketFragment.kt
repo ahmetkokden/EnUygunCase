@@ -14,6 +14,8 @@ import com.example.enuyguncase.data.local.BasketProductListEntity
 import com.example.enuyguncase.databinding.FragmentBasketBinding
 import com.example.enuyguncase.domain.mapper.toPaymentProduct
 import com.example.enuyguncase.domain.model.PaymentDetail
+import com.example.enuyguncase.navigation.MultiNavHost
+import com.example.enuyguncase.navigation.SelectItemListener
 import com.example.enuyguncase.navigation.setBadgeNumber
 import com.example.enuyguncase.ui.checkout.CheckoutFragment.Companion.CHECKOUT_MODEL
 import com.example.enuyguncase.utilities.format
@@ -22,7 +24,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class BasketFragment : Fragment() {
+class BasketFragment : Fragment(),SelectItemListener {
     private lateinit var binding: FragmentBasketBinding
 
     private val basketFragmentViewModel: BasketFragmentViewModel by viewModels()
@@ -42,13 +44,14 @@ class BasketFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        MultiNavHost.selectItemListener = this
+        MultiNavHost.bottomNavigationListener.bottomNavVisibility(true)
         initUI()
         observeData()
     }
 
     private fun initUI() {
         basketFragmentViewModel.getBasketProduct()
-
         with(binding) {
             tvCheckoutButton.setOnClickListener {
                 val bundle = setCheckoutBundle()
@@ -56,6 +59,11 @@ class BasketFragment : Fragment() {
                     R.id.action_basket_fragment_to_checkout_fragment,
                     bundle
                 )
+            }
+
+            srlProductList.setOnRefreshListener {
+                basketFragmentViewModel.getBasketProduct()
+                srlProductList.isRefreshing = false
             }
         }
     }
@@ -137,5 +145,11 @@ class BasketFragment : Fragment() {
             tvCheckoutButton.isEnabled = listEntity.isEmpty().not()
         }
 
+    }
+
+    override fun selectMenuItem(item: Int) {
+        if(item == R.id.navigation_basket ) {
+            basketFragmentViewModel.getBasketProduct()
+        }
     }
 }

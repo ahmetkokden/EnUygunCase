@@ -19,12 +19,14 @@ class ProductDatabaseRepository @Inject internal constructor(
     fun addBasketProduct(favoriteProductListEntity: FavoriteProductListEntity) =
         basketProductDao.addBasketProduct(favoriteProductListEntity.toBasketProductListEntity())
 
-
     fun updateBasketProductCount(count: Int, productId: Long) =
         basketProductDao.updateCount(count, productId)
 
     fun deleteProductFromBasket(productId: Long) =
         basketProductDao.deleteBasketProduct(productId)
+
+    fun deleteAllProductFromBasket() =
+        basketProductDao.purgeAllBasketProduct()
 
     private val favoriteProductDao = productDatabase.favoriteProductDao()
 

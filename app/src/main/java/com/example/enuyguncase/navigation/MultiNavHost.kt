@@ -306,5 +306,7 @@ class MultiNavHost(
     companion object {
         var isMultiNavHostInitialized: Boolean = false
         lateinit var backPressedlistener: BackPressedListener
+        lateinit var selectItemListener: SelectItemListener
+        lateinit var bottomNavigationListener: BottomNavigationListener
     }
 }

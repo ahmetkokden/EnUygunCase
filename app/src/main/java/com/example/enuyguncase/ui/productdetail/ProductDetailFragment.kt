@@ -19,6 +19,7 @@ import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentProductDetailBinding
 import com.example.enuyguncase.domain.mapper.toImageItemList
 import com.example.enuyguncase.domain.model.ProductListItem
+import com.example.enuyguncase.navigation.MultiNavHost
 import com.example.enuyguncase.ui.adapter.ImageAdapter
 import com.example.enuyguncase.ui.home.HomeFragment.Companion.PRODUCT_ID
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,6 +56,7 @@ class ProductDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        MultiNavHost.bottomNavigationListener.bottomNavVisibility(false)
         initUI()
         observeData()
     }

@@ -14,6 +14,7 @@ import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentHomeBinding
 import com.example.enuyguncase.domain.model.ProductList
 import com.example.enuyguncase.domain.model.ProductListItem
+import com.example.enuyguncase.navigation.MultiNavHost
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -38,6 +39,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        MultiNavHost.bottomNavigationListener.bottomNavVisibility(true)
         initUI()
         observeData()
         homeViewModel.getProductList()
@@ -57,20 +59,17 @@ class HomeFragment : Fragment() {
                 },homeViewModel.productCategories.value
                 ).show(childFragmentManager, FilterDialogFragment::javaClass.name)
             }
+
+            srlProductList.setOnRefreshListener {
+                homeViewModel.getProductList()
+                srlProductList.isRefreshing = false
+            }
         }
     }
 
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
             homeViewModel.productList.collect {
-                setTotalCount()
-                if (it.isEmpty().not())
-                    prepareProductList(it)
-            }
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            homeViewModel.filteredProduct.collect {
                 setTotalCount()
                 if (it.isEmpty().not())
                     prepareProductList(it)

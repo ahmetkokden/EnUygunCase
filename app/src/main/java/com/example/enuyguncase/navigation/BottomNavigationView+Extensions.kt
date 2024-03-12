@@ -73,13 +73,13 @@ private fun BottomNavigationView.setupMultipleBackStack(
 
             R.id.navigation_favorite -> {
                 badge.isVisible = false
-
+                MultiNavHost.selectItemListener.selectMenuItem(item.itemId)
                 true
             }
 
             R.id.navigation_basket -> {
                 badge.isVisible = true
-
+                MultiNavHost.selectItemListener.selectMenuItem(item.itemId)
                 true
             }
 
@@ -91,7 +91,9 @@ private fun BottomNavigationView.setupMultipleBackStack(
     }
 
     // Optional: on item reselected, pop back stack to the destination of the graph
-    setOnNavigationItemReselectedListener { item -> multiNavHost.reselectSiblings(item.itemId) }
+    setOnNavigationItemReselectedListener { item ->
+        multiNavHost.reselectSiblings(item.itemId)
+    }
 
     multiNavHost.observeBackStack { itemId ->
         selectedItemId = itemId

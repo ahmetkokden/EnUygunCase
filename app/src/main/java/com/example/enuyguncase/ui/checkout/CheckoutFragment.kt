@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.enuyguncase.R
 import com.example.enuyguncase.databinding.FragmentCheckoutBinding
+import com.example.enuyguncase.navigation.MultiNavHost
 import com.example.enuyguncase.ui.payment.PaymentFragment.Companion.PAYMENT_MODEL
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ class CheckoutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        MultiNavHost.bottomNavigationListener.bottomNavVisibility(false)
         checkoutFragmentViewModel.paymentDetail = requireArguments().getParcelable(
             CHECKOUT_MODEL
         )

@@ -19,8 +19,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nsv_home_products"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl_product_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginVertical="@dimen/unit13"
@@ -29,24 +29,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_basket_title">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv_home_products"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_basket_product"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="visible"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:itemCount="4"
-                    tools:listitem="@layout/item_basket_product" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_basket_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/item_basket_product" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <TextView
             android:id="@+id/tv_price_title"
@@ -68,11 +74,11 @@
             android:layout_marginEnd="@dimen/unit20"
             android:layout_marginBottom="@dimen/unit2"
             android:fontFamily="@font/inter_bold"
-            tools:text="2345 TL"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/tv_discount_title"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2345 TL" />
 
         <TextView
             android:id="@+id/tv_discount_title"
@@ -94,11 +100,11 @@
             android:layout_marginEnd="@dimen/unit20"
             android:layout_marginBottom="@dimen/unit2"
             android:fontFamily="@font/inter_bold"
-            tools:text="%34"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/tv_total_price"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="%34" />
 
         <TextView
             android:id="@+id/tv_total_price_title"
@@ -120,11 +126,11 @@
             android:layout_marginEnd="@dimen/unit20"
             android:layout_marginBottom="@dimen/unit52"
             android:fontFamily="@font/inter_bold"
-            tools:text="1234 TL"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/tv_checkout_button"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="1234 TL" />
 
         <TextView
             android:id="@+id/tv_checkout_button"
