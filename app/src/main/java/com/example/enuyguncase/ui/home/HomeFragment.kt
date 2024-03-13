@@ -70,17 +70,26 @@ class HomeFragment : Fragment() {
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
             homeViewModel.productList.collect {
-                setTotalCount()
+                setTotalCount(it)
                 if (it.isEmpty().not())
                     prepareProductList(it)
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            homeViewModel.filteredProduct.collect {
+                setTotalCount(it)
+                if (it.isEmpty().not())
+                    prepareProductList(it)
+            }
+        }
+
     }
 
-    private fun setTotalCount() {
+    private fun setTotalCount(list: List<ProductListItem>) {
         with(binding) {
             tvProductCount.text =
-                context?.getString(R.string.product_count, homeViewModel.productList.value.size)
+                context?.getString(R.string.product_count, list.size.toString())
         }
     }
 

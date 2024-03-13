@@ -26,11 +26,16 @@ class HomeFragmentViewModel @Inject constructor(
     private val _productCategories = MutableStateFlow<List<String>>(emptyList())
     val productCategories = _productCategories.asStateFlow()
 
+    private val _filteredProduct = MutableStateFlow<List<ProductListItem>>(emptyList())
+    val filteredProduct = _filteredProduct.asStateFlow()
+
+
     fun getProductList() {
         viewModelScope.launch {
             productListUseCase.getProductList().collect { response ->
                 when (response.status) {
                     NetworkResult.Status.SUCCESS -> {
+                        _productList.emit(emptyList())
                         _productList.emit(response.data?.products ?: emptyList())
                     }
 
@@ -126,7 +131,7 @@ class HomeFragmentViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
-            _productList.emit(filteredProductList)
+            _filteredProduct.emit(filteredProductList)
         }
     }
 
